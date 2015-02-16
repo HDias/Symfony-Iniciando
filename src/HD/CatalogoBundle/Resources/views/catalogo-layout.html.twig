@@ -1,0 +1,12 @@
+{% extends '::base.html.twig' %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="{#{ asset('bundles/catalogo/css/style.css') }#}">
+
+	{# Quando tiver vários usar a seguinte forma #}
+	{# Deve ser adicionado em config.yml o nome do bundle em assetic #}
+	{% stylesheets 'bundles/catalogo/css/*' filter='cssrewrite' %}
+		<link rel="stylesheet" href="{{ asset_url }}">
+	{% endstylesheets %}
+
+{% endblock %}

@@ -21,27 +21,20 @@ security:
     # the main part of the security, where you can set up firewalls
     # for specific sections of your app
     firewalls:
-        # disables authentication for assets and the profiler, adapt it according to your needs
-        dev:
-            pattern:  ^/(_(profiler|wdt)|css|images|js)/
-            security: false
-        # the login page has to be accessible for everybody
-        demo_login:
-            pattern:  ^/demo/secured/login$
-            security: false
-
         # secures part of the application
         demo_secured_area:
-            pattern:    ^/demo/secured/
-            # it's important to notice that in this case _demo_security_check and _demo_login
-            # are route names and that they are specified in the AcmeDemoBundle
+            pattern:    ^/
+
             form_login:
-                check_path: _demo_security_check
-                login_path: _demo_login
+                check_path: login_check
+                login_path: login
+                default_target_path: catalogo # Redirecionamento default depois de logado
+
             logout:
-                path:   _demo_logout
-                target: _demo
-            #anonymous: ~
+                path:   logout # Rota do lougout
+                target: login # Depois de fazer lougout vai redirecionar
+                
+            anonymous: ~ # Permite Logar como anônimo
             #http_basic:
             #    realm: "Secured Demo Area"
 
@@ -49,4 +42,8 @@ security:
     # of your application based on roles, ip, host or methods
     # http://symfony.com/doc/current/cookbook/security/access_control.html
     access_control:
+        # Para não ser necessário fazer isso para todas as rotas com segurana aqui
+        # Faça no Controller
+        - { path: ^/catalogo/new,       roles: ROLE_USER } # Para acessar essa route precisa ser ROLE_USER
+        - { path: ^/catalogo/create,    roles: ROLE_USER }
         #- { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https }

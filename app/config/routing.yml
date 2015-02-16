@@ -1,3 +1,13 @@
 catalogo:
-    resource: "@CatalogoBundle/Resources/config/routing.yml"
-    prefix:   /catalogo
+    resource: 	"@CatalogoBundle/Resources/config/routing.yml"
+    prefix:   	/
+#Foi usado route como annotation na Action index   
+catalogo:
+    resource: 	"@CatalogoBundle/Controller"
+    prefix:   	/
+    type:		annotation	
+
+hd_userbundle:
+    resource: 	"@UserBundle/Controller"
+    prefix:   	/
+    type:		annotation	

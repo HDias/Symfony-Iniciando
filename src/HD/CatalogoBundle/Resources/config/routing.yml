@@ -1,3 +1,7 @@
+catalogo_catalogo:
+    resource: "@CatalogoBundle/Resources/config/routing/catalogo.yml"
+    prefix:   /catalogo
+
 catalogo_homepage:
     path:     /hello/{name}
     defaults: { _controller: CatalogoBundle:Default:index }

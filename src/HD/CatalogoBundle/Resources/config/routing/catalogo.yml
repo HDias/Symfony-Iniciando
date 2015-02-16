@@ -1,0 +1,33 @@
+catalogo:
+    path:     /
+    defaults: { _controller: "CatalogoBundle:Catalogo:index" }
+
+catalogo_show:
+    path:     /{id}/show
+    defaults: { _controller: "CatalogoBundle:Catalogo:show" }
+
+catalogo_new:
+    path:     /new
+    defaults: { _controller: "CatalogoBundle:Catalogo:new" }
+
+catalogo_create:
+    path:     /create
+    defaults: { _controller: "CatalogoBundle:Catalogo:create" }
+    methods: [POST]
+
+catalogo_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "CatalogoBundle:Catalogo:edit" }
+    requirements: { "id": "\d+" }
+
+catalogo_update:
+    path:     /{id}/update
+    defaults: { _controller: "CatalogoBundle:Catalogo:update" }
+    requirements: { "id": "\d+" }
+    methods: [POST, PUT]
+
+catalogo_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "CatalogoBundle:Catalogo:delete" }
+    requirements: { "id": "\d+" }
+    methods: [POST, DELETE]

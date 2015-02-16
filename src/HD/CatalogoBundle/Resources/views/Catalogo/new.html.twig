@@ -1,0 +1,22 @@
+{% extends '::base.html.twig' %}
+
+{% set title = 'Catalogo Creation' %}
+
+{% block title -%}
+    {{ parent() ~ title}} 
+{% endblock %}
+
+{% block body -%}
+    <h1>{{ title }}</h1>
+
+
+    {{ form(form) }}
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('catalogo') }}">
+            Back to the list
+        </a>
+    </li>
+</ul>
+{% endblock %}

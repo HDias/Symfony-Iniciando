@@ -32,6 +32,7 @@ twig:
 
 # Assetic Configuration
 assetic:
+    bundles: [ "CatalogoBundle" ] ## Para funcionar o stylesheets em catalogo-layout.html.twig
     debug:          "%kernel.debug%"
     use_controller: false
     bundles:        [ ]
