@@ -1,0 +1,3 @@
+catalogo_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: CatalogoBundle:Default:index }
