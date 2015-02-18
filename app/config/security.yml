@@ -3,7 +3,11 @@
 security:
     # http://symfony.com/doc/current/book/security.html#encoding-the-user-s-password
     encoders:
-        Symfony\Component\Security\Core\User\User: plaintext
+        #Symfony\Component\Security\Core\User\User: plaintext
+        # Entity do UserBundle
+        HD\UserBundle\Entity\User: 
+            algorithm: bcrypt
+            cost: 12
 
     # http://symfony.com/doc/current/book/security.html#hierarchical-roles
     role_hierarchy:
@@ -12,11 +16,12 @@ security:
 
     # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
     providers:
-        in_memory:
-            memory:
-                users:
-                    user:  { password: userpass, roles: [ 'ROLE_USER' ] }
-                    admin: { password: adminpass, roles: [ 'ROLE_ADMIN' ] }
+        # UserBUndle
+        hd_userbundle_user:
+            # Se Usar somente uma propriedade da Entity para logar user: property: username
+            # Se usar mais de uma DEve ser configurado o repository da Entity
+            #//http://symfony.com/doc/current/cookbook/security/entity_provider.html#authenticating-someone-with-a-custom-entity-provider
+            entity: { class: UserBundle:User } 
 
     # the main part of the security, where you can set up firewalls
     # for specific sections of your app
