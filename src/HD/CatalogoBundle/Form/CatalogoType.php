@@ -17,7 +17,7 @@ class CatalogoType extends AbstractType
         $builder
             ->add('name')
             ->add('description')
-            ->add('releaseDate')
+            ->add('releaseDate', 'date', array('widget' => 'single_text'))
             ->add('imageName')
         ;
     }

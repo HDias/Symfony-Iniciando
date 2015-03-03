@@ -12,6 +12,22 @@
 
     {{ form(form) }}
 
+    {# CAmpo por campo #}
+    {#{ form_row(fom.nome_do_campo) }#}
+    {#{ form_row(fom.nome_do_campo) }#}
+
+    {# CRSF e campos ocultos #}
+    {#{ form_rest(form) }#}
+
+    {#{ Outra Forma de gerar }#}
+
+    {#{ form_start(form) }#}
+	{#{ form_widget(form) }#}
+	{#{ form_end(form) }#}
+
+	{# Site com outras variaveis e métodos do twig #}
+	{# http://symfony.com/doc/current/reference/forms/twig_reference.html#form-rest-view-variables #}
+
         <ul class="record_actions">
     <li>
         <a href="{{ path('catalogo') }}">

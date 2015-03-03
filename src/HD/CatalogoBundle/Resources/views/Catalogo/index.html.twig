@@ -44,7 +44,11 @@
                         <a href="{{ path('catalogo_show', { 'id': entity.id }) }}">show</a>
                     </li>
                     <li>
-                        <a href="{{ path('catalogo_edit', { 'id': entity.id }) }}">edit</a>
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <a href="{{ path('catalogo_edit', { 'id': entity.id }) }}">edit</a>
+                        {% else %}
+                            <a>edit - desabilitado</a>
+                        {% endif %}
                     </li>
                 </ul>
                 </td>

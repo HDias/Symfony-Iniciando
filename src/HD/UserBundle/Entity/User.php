@@ -46,6 +46,13 @@ class User implements
     private $password;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="plain_password", type="string", length=255)
+     */
+    private $plainPassword;
+
+    /**
      * @var array
      *
      * @ORM\Column(type="array")
@@ -55,13 +62,13 @@ class User implements
     /**
      * @var bool
      *
-     * @ORM\Column(name="is_active", type="boolean")
+     * @ORM\Column(name="is_enabled", type="boolean")
      */
-    private $isActive;
+    private $isEnabled;
 
     public function __construct()
     {
-        $this->isActive = true;
+        $this->isEnabled = true;
     }
 
     /**
@@ -144,6 +151,30 @@ class User implements
     }
 
     /**
+     * Set plainPassword
+     *
+     * @param string $plainPassword
+     * @return User
+     */
+    public function setPlainPassword($plainPassword)
+    {
+        $this->plainPassword = $plainPassword;
+
+        return $this;
+    }
+
+    /**
+     * Get password
+     *
+     * @return string 
+     */
+    public function getPlainPassword()
+    {
+        return $this->plainPassword;
+    }
+
+
+    /**
      * Get salt
      *
      * @return string 
@@ -190,7 +221,7 @@ class User implements
      */
     public function eraseCredentials()
     {
-
+        $this->setPlainPassword(null);
     }
 
     //Não está na interface
@@ -223,7 +254,7 @@ class User implements
     // checks whether the user is enabled.
     public function isEnabled()
     {
-        return $this->isActive;
+        return $this->isEnabled;
     }
 
     /* Métodos de \Serialized
