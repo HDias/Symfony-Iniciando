@@ -4,6 +4,7 @@ namespace HD\UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\AdvancedUserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * User
@@ -28,6 +29,12 @@ class User implements
      * @var string
      *
      * @ORM\Column(name="username", type="string", length=255)
+     * @Assert\NotBlank()
+     * @Assert\Regex(
+     *     pattern     = "/^[a-z0-9]+$/i",
+     *     htmlPattern = "^[a-zA-Z0-9]+$",
+     *     message="Somente Letras e Números"
+     * )
      */
     private $username;
 
@@ -35,6 +42,7 @@ class User implements
      * @var string
      *
      * @ORM\Column(name="email", type="string", length=255)
+     * @Assert\NotBlank()
      */
     private $email;
 
@@ -47,8 +55,7 @@ class User implements
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="plain_password", type="string", length=255)
+     * @Assert\NotBlank()
      */
     private $plainPassword;
 

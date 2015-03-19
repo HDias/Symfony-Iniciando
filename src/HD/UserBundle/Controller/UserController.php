@@ -58,6 +58,8 @@ class UserController extends Controller
             $em->persist($entity);
             $em->flush();
 
+            $this->addFlash('success', 'Registro feito com Sucesso');
+
             return $this->redirect($this->generateUrl('user_show', array('id' => $entity->getId())));
         }
 

@@ -15,7 +15,12 @@ class UserType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('username')
+            ->add('username', 'text', array(
+                'attr'      => array(
+                    'title' => 'Somente Letras e Números',
+                    'pattern'   => '[a-zA-Z0-9]+'
+                )
+            ))
             ->add('email', 'email')
             //http://symfony.com/doc/current/reference/forms/types/repeated.html
             ->add('plainPassword', 'repeated', array(
